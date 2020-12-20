@@ -1,0 +1,27 @@
+@prefix :     <http://example.com/owl#> .
+@prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl:  <http://www.w3.org/2002/07/owl#> .
+
+:myPizza rdf:type :Pizza.
+:dog rdf:type :Animal.
+:Animal rdfs:subClassOf :Living.
+:Living owl:equivalentClass :Alive.
+
+:eats rdfs:subPropertyOf :consumes.
+:dog :eats :myPizza.
+
+:SmallDog  owl:equivalentClass  [
+  rdf:type            owl:Class ;
+  owl:intersectionOf  ( :Small :Dog ) 
+ ].
+
+:hasPet rdfs:domain :owner .
+:I :hasPet :dog .
+
+
+:cat owl:disjointWith :dog .
+:Catdog rdf:type :cat .
+:Catdog rdf:type :dog .
+
+:man rdfs:subClassOf owl:Nothing .
